@@ -802,6 +802,8 @@ p {
 	font-size: 14px;
 }
 
+
+
 .sampleInfo video {
 padding: 20px;
 
@@ -902,6 +904,22 @@ padding-left: 10px;
 	border-style: dashed;
 	border-spacing: 2px;
 }
+
+#slider-range {
+   	text-align:center;
+   	margin-top: 10px;
+   	
+}
+   			
+#slider-box {
+   	width:50px;
+   	height:50px;
+   	border: 3px solid;
+   	border-color: red ;
+   	z-index: 2;
+   	float:right;
+}
+
 
 .video_stack_position {
 
@@ -1061,6 +1079,9 @@ label {
 	height:120px; 
 	background-color: rgb(40,47,54);
 	border-bottom:5px solid orange;
+	-webkit-box-shadow:0 0 20px orange; 
+	-moz-box-shadow: 0 0 20px orange; 
+	box-shadow:0 0 20px orange; 
 	border-top:20px solid rgb(40,47,54); 
 }
 
@@ -1128,6 +1149,73 @@ font-size:20px;
 	-ms-transition: border 0.1s linear;
 	transition: border 0.1s linear;
 
+}
 
+ #about p {
+ padding-left:400px;
+ padding-right:400px; 
+ font-size:18px;
+ 
+ }
+ 
+ #about a:visited {
+ color: yellow; 
+ text-decoration: italic underline; 
+ }
+
+.top-header h1 {
+
+	padding:0;
+}
+
+#main-nav {
+
+	padding-right:100px;
+
+}
+
+#about_image {
+
+padding:50px; 
+margin-left:240px
+}
+
+.sample_videos {
+
+
+padding-left: 30px;
+padding-top: 20px;
+
+}
+
+.sample_videos video {
+
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+float: left;
+
+
+}
+
+.sample_videos video:hover {
+
+     border: 5px solid white;
+	
+	-webkit-box-shadow:0 0 20px white; 
+	-moz-box-shadow: 0 0 20px white; 
+	box-shadow:0 0 20px white; 
+
+	-webkit-transition: border 0.1s linear;
+	-moz-transition: border 0.1s linear;
+	-o-transition: border 0.1s linear;
+	-ms-transition: border 0.1s linear;
+	transition: border 0.1s linear;
+
+
+}
+
+#videoInst h1 {
+height:20px;
 
 }
