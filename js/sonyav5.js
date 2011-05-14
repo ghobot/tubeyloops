@@ -20,7 +20,27 @@
   $(function() {
 
   	$("#draggable").draggable();
+  	
+  	$( "#accordion" ).accordion({
+  		collapsible: true
+  	
+  	});
 
+ 	
+ 	$( "#slider-range" ).slider({
+			
+					step:.1,
+					range: true,
+					min: 0,
+					max: 500,
+					values: [ 0, 500 ],
+				slide: function( event, ui ) {
+				$( "#amount" ).val("in: "+ui.values[ 0 ] + " <-> " +"out: "+ ui.values[ 1 ] );
+				}
+			});
+				$( "#amount" ).val("in: "+$( "#slider-range" ).slider( "values", 0 ) +
+			" <-> " + "out: "+$( "#slider-range" ).slider( "values", 1 ));		 	
+ 
     $(document).bind("keydown", function( event ) {
       Emit.last = ({
         81: 0,
@@ -73,7 +93,9 @@
             out: $(".time-out")
         };
 
-    $timeInputs.bind("change blur", function() {
+
+
+    $timeInputs.bind("mousemove", function() {
     
       var $this = $(this),
           type = $this.data("type");
@@ -82,6 +104,10 @@
       times[ $timeTypes[ type ].index( this ) ][ type ] = parseFloat($this.val());
 
     });
+    
+        
+    
+    
 //------------------ video stack   ----------------//
 
 /*
@@ -185,7 +211,7 @@ $clone[0].timeData = times[idx];
     $("#videoUrl1").bind('click change' , function() {
       // get the value of the url field when user clicks in it and changes value
       var videourl1 = $("#videoUrl1").val();
-      $("#videoPreview1").attr("src", videourl1);
+      $("#videoPreview1").attr("src", videourl1);      
     });
 
     $("#videoUrl2").bind('click change' , function() {
@@ -228,18 +254,77 @@ $clone[0].timeData = times[idx];
       $("#video-3").attr("src" , videourl4);
     });
 
-//-------this part of the script updates the span that shows length of the video when the video div is clicked -----//
 
-        $("#videoPreview1").bind('click', function() {        
+		 //---------------------this shuttles the current time in video preview to the in point value---------------------//
+	
+/*
+	$(".time-in").each('change' , function(index) {
+			var videoPreview= "#"+"videoPreview"+index;
+			
+		$(videoPreview).attr("currentTime" , $(this).val())			
+		});
+
+
+		$(".time-in").change(function() {
+				$(".time-in").each(function(index) {  
+					var videoPreview=("#"+"videoPreview"+index;
+					$(videoPreview).attr("currentTime" , $(this).val())
+				})
+		})
+*/
+
+
+		$("#timeIn1").bind('change' , function() {
+								$("#videoPreview1").attr("currentTime" , $(this).val() );
+								//alert("the value is changing");
+								});
+		
+		
+		$("#timeIn2").bind('change' , function() {
+								$("#videoPreview2").attr("currentTime" , $(this).val() );
+								});
+								
+		
+		$("#timeIn3").bind('change' , function() {
+								$("#videoPreview3").attr("currentTime" , $(this).val() );
+								});
+								
+		
+		$("#timeIn4").bind('change' , function() {
+								$("#videoPreview4").attr("currentTime" , $(this).val() );
+								});
+
+//-------this part of the script updates the span that shows length of the video when the video div is clicked and updates the slider value -----//
+
+
+
+        $("#videoPreview1").mouseover(function() {        
           var displayTime1 = $("#videoPreview1").attr("duration");  
 
           if ($("#videoPreview1").attr('readyState') > 3) {
           $("#videoDuration1").html(Math.round(displayTime1)+" "+"seconds total");
+		  $( "#slider-range" ).slider( "option", "max", Math.round(displayTime1));  
+		  $( "#amount" ).val("in: "+$( "#slider-range" ).slider( "values", 0 ) +" <-> " + "out: "+$( "#slider-range" ).slider( "values", 1 ));
+          $("#timeIn1").val($("#slider-range").slider("values", 0));
             } else {$("#videoDuration1").html("video length..."); 
                 };
             });
         
-        $("#videoPreview2").bind('click', function() {        
+        $("#videoTimeField1 .ui-slider-handle:eq(0)").mousemove(function()  {
+        			var newIn=$("#slider-range").slider("values", 0);
+        			$("#timeIn1").val(newIn);   
+        	
+   		 });
+   		 
+   		  
+       	$("#videoTimeField1 .ui-slider-handle:eq(1)").mousemove(function()  {
+        			var newOut=$("#slider-range").slider("values", 1);
+        			$("#timeOut1").val(newOut);        	
+        });
+     	  
+        
+        
+        $("#videoPreview2").bind('mouseenter', function() {        
           var displayTime2 = $("#videoPreview2").attr("duration");  
           
           if (videoPreview2.readyState > 0) {
@@ -272,47 +357,8 @@ $clone[0].timeData = times[idx];
             $("#videoDuration4").html("video length..."); 
           };
         });
-
-
-    //---------------------this shuttles the current time in video preview to the in point value---------------------//
-	
-/*
-	$(".time-in").each('change' , function(index) {
-			var videoPreview= "#"+"videoPreview"+index;
-			
-		$(videoPreview).attr("currentTime" , $(this).val())			
-		});
-
-
-		$(".time-in").change(function() {
-				$(".time-in").each(function(index) {  
-					var videoPreview=("#"+"videoPreview"+index;
-					$(videoPreview).attr("currentTime" , $(this).val())
-				})
-		})
-*/
-
-
-		$("#timeIn1").bind('change' , function() {
-								$("#videoPreview1").attr("currentTime" , $(this).val() );
-								});
-		
-		
-		$("#timeIn2").bind('change' , function() {
-								$("#videoPreview2").attr("currentTime" , $(this).val() );
-								});
-								
-		
-		$("#timeIn3").bind('change' , function() {
-								$("#videoPreview3").attr("currentTime" , $(this).val() );
-								});
-								
-		
-		$("#timeIn4").bind('change' , function() {
-								$("#videoPreview4").attr("currentTime" , $(this).val() );
-								});
-
-		
+        
+   		
 
     //---------------------these are toggle buttons to hide the sample info---------------------//
 
@@ -322,7 +368,8 @@ $clone[0].timeData = times[idx];
      //alert("button is clicked");
     
     });
-
+    
+   
     $("#editSample2").click(function() {
       $("#sampleInfo2").slideToggle("slow");
     
@@ -345,10 +392,17 @@ $clone[0].timeData = times[idx];
     
     });
     
+ /*
+    $(".editSample").click(function() {
+    	$(this.videoContainer).slideToggle("slow");
+    })
+*/
+
+    
     $("#hide_patternsketch").click(function() {
     	$("#collapse_ps").slideToggle("slow");
     	
-    })
+    });
 
   //---------------------this displays the duration of the video track inputed---------------------//
 

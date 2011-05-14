@@ -7,7 +7,7 @@ this is the working version5, with ADDED BANNER
 <meta name="description" content="PatternSketch - HTML5/JavaScript Drum Machine and Sequencer">
 <title>PatternSketch/TubeyLoops - HTML5/JavaScript Drum Machine and Video Sequencer</title>
 <link rel="stylesheet" href="index_files/style.css" type="text/css" media="screen">
-<link rel="stylesheet" href="js/jquery-ui-1.8.12.custom/css/sunny/jquery-ui-1.8.12.custom.css">
+<link rel="stylesheet" href="js/jquery-ui-1.8.12.custom.andale/css/custom-theme/jquery-ui-1.8.12.custom.css">
 <script src="index_files/script.js"></script><script type="text/javascript">
 
 u='';kA=[{"id":"10","name":"Com Truise Kit"},{"id":"3","name":"Dub"},{"id":"7","name":"Electronic"},{"id":"5","name":"Jazz"},{"id":"8","name":"Live"},{"id":"4","name":"Reggae"},{"id":"1","name":"TR-808"},{"id":"2","name":"TR-909"},{"id":"9","name":"Vintage"}];
@@ -23,7 +23,7 @@ upa='';spa=[{"tempo":96,"steps":64,"chVol":{"0":88,"1":68,"2":75,"3":75,"4":39,"
 <script src="js/popcorn.js"></script>
 <script src="js/sonyav5.js"></script>
 
-<div class="top-header"><h1 style="padding:0;"><a href="index.html"><img id="top-logo" src="images/tubeyloops_logo_banner.png" height="75%" /></a>
+<div class="top-header"><h1 style="padding:0;"><a href="index_fix.html"><img id="top-logo" src="images/tubeyloops_logo_banner.png" /></a>
 	<ul id="main-nav" style="padding-right:100px">
 		<li><a href="about.html">About</a></li>
 		<li><a href="videos.html" target="_blank">Videos</a></li>
@@ -32,16 +32,18 @@ upa='';spa=[{"tempo":96,"steps":64,"chVol":{"0":88,"1":68,"2":75,"3":75,"4":39,"
 		<li><a href="http://www.sciencelifeny.com/contact-us/">Contact</a></li>
 	</ul></h1>
 </div>
-<h1 style="padding:0 20px 0;">VIDEO KEYS: Q W E R, INSTRUMENT KEYS: U I O A S D F G J K L</h1> 
+<h1 id="directions">To trigger VIDEO, press keyboard KEYS: "Q" "W" "E" or "R". To trigger INSTRUMENT, press KEYS: U I O A S D F G J K L.</h1> 
 
+<div id="accordion">
+<h3><a href="#">Watch your triggered videos here</a></h3>
 <div class="video_stack_position">
 	<div id="video-stack" >
 	</div>
 </div>
-
 <!-- This is the patternsketch segment -->
 
-<button id="hide_patternsketch" name="switch" >HIDE Patternsketch</button>
+<h3><a href="#">Patternsketch Beat Sequencer</a></h3>
+<!-- <button style="display:none;" id="hide_patternsketch" name="switch" >HIDE Patternsketch</button>	 -->
 <div id="collapse_ps">
 <div id="divStatusBar" style="display:none;" > 
 	<div id="divStatusBarWrapper"> 
@@ -635,7 +637,7 @@ Master Vol
 </div> 
 </div> 
 </div> 
-<div id="divAboutWrapper"> 
+<div  id="divAboutWrapper"> 
 <a name="about"></a><br /> 
 <h1>Patternsketch</h1> 
 <p>Patternsketch is an HTML5 and Javascript audio sequencer and drum machine. With it, you can create audio patterns, play them back, adjust playback tempo, volume, and change the audio kit. You can also save, export, and collaborate with your friends.</p> 
@@ -648,11 +650,13 @@ Master Vol
 </div> 
 </div>
 <!-- This is the tubeyloops segment -->
-<div id="tubeyloops_section" style="float:left;">
-<div id="draggable">
+<h3><a href="#">Change video samples here</a></h3>
+
+<div id="tubeyloops_section" >
+<div id="draggable" style="clear:both">
 	<div id="saveUrls">
-		<p>Use ogg video from <a href="http://www.archive.org/index.php" target="_blank">Archive.org</a>for the video URL field.</p>
-		<textarea rows="5" cols="75">A place to paste your URLS</textarea>
+		<p>Use ogg video from <a href="http://www.archive.org/index.php" target="_blank">Archive.org</a> for the video URL field.</p>
+		<textarea rows="5" cols="40">A place to paste your URLS</textarea>
 	</div>
 </div>
 <div id="videoSample1" class="videoContainer" >
@@ -666,7 +670,7 @@ Master Vol
 				<input id="videoUrl1" type="text" placeholder="'http://http.video.ogv'" /><span id="videoDuration1" class="videoDuration"></span>
 			</label>
 		</div>
-<div id="videoTimeField1" class="videoTimeInput">
+				<div id="videoTimeField1" class="videoTimeInput" style="display:none;">
 					<div style="text-align:center; padding-top:10px;">
 						<label for='amount'></label>
 						<input type="text" id="amount" style="width:400px; border:0; color:#f6931f; font-size: 1.5em; text-align:center;" />
@@ -685,7 +689,7 @@ Master Vol
 		</div>
 	</div>
 </div>
-<div id="videoSample2" class="videoContainer"  >
+<div id="videoSample2" class="videoContainer">
 	<div class = "videoContainertop"><h1>Video Sample 2 (W key) <button id="editSample2" class="editSample" name="switch" > edit </button></h1></div>
 	<div class="sampleInfo" id="sampleInfo2">
 		<div>
@@ -708,7 +712,7 @@ Master Vol
 		</div>			
 	</div>	
 </div>
-<div id = "videoSample3" class="videoContainer" style="text-align:left; " >
+<div id = "videoSample3" class="videoContainer">
 	<div class="videoContainertop"><h1>Video Sample 3 (E key) <button id="editSample3" class="editSample" name="switch" > edit </button></h1></div>
 	<div class="sampleInfo" id="sampleInfo3">
 		<div>
@@ -731,7 +735,7 @@ Master Vol
 		</div>
 	</div>	
 </div>
-<div id = "videoSample4" class="videoContainer" style="text-align:left;" >
+<div id = "videoSample4" class="videoContainer">
 	<div class="videoContainertop"><h1>Video Sample 4 (R key) <button id="editSample4" class="editSample" name="switch" > edit </button></h1></div>
 	<div class="sampleInfo" id="sampleInfo4">
 		<div>
@@ -754,8 +758,8 @@ Master Vol
 		</div>
 	</div>	
 </div>	
-<footer style="margin-left:100px; height:100px; width:200%; background-color: transparent;"></footer>
-
+<footer style="margin-left:100px; height:100px; width:200%; background-color: transparent; clear:both;"></footer>
+</div>
 </div>
 </body>
 
