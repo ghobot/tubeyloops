@@ -21,10 +21,9 @@
 
   	$("#draggable").draggable();
   	
-  	$( "#accordion" ).accordion({
-  		collapsible: true
-  	
-  	});
+  	$( "#accordion" ).accordion({collapsible: true});
+	$( "#accordion" ).accordion("option" , "active" , false);
+
 
  	
  	$( "#slider-range" ).slider({
@@ -171,7 +170,11 @@ $clone[0].timeData = times[idx];
   	$("#videoDrag-2").draggable();
   	$("#videoDrag-3").draggable();
   	
-  	$("#videoDrag-0").resizable({aspectRatio: 16 / 9});
+  	$("#videoDrag-0").resizable({
+  		aspectRatio: 16 / 9,
+		animate: true
+  		});
+  		
 	$("#videoDrag-1").resizable({aspectRatio: 16 / 9});
 	$("#videoDrag-2").resizable({aspectRatio: 16 / 9});
 	$("#videoDrag-3").resizable({aspectRatio: 16 / 9});
@@ -334,19 +337,19 @@ $clone[0].timeData = times[idx];
                 };
             });
             
-        $("#videoPreview3").bind('click', function() {        
+        $("#videoPreview3").bind('mouseenter', function() {        
           var displayTime3 = $("#videoPreview3").attr("duration");  
           
-          if ( videoPreview3.readyState > 0 ) {
+          if (videoPreview3.readyState > 0 ) {
 
             $("#videoDuration3").html(Math.round(displayTime3)+" "+"seconds total");
 
           } else {
-            $("#videoDuration1").html("video length..."); 
+            $("#videoDuration3").html("video length..."); 
           };
         });
         
-        $("#videoPreview4").bind('click', function() {        
+        $("#videoPreview4").bind('mouseenter', function() {        
           var displayTime4 = $("#videoPreview4").attr("duration");  
 
           if (videoPreview4.readyState > 0) {
